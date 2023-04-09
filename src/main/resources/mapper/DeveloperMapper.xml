@@ -7,4 +7,30 @@
     <select id="getDeveloper" resultType="com.shop.myapp.dto.DeveloperDTO">
         select * from developer where id=#{id}
 	</select>
+    <delete id="deleteDeveloper" parameterType="long">
+        DELETE FROM developer
+        WHERE id=#{id}
+    </delete>
+    <insert id="insert" parameterType="com.shop.myapp.dto.DeveloperDTO">
+        INSERT INTO developer
+        SET
+        <if test="name!=null">
+            name=#{name},
+        </if>
+        <if test="field!=null">
+            field=#{field}
+        </if>
+    </insert>
+
+    <update id="update" parameterType="com.shop.myapp.dto.DeveloperDTO">
+        UPDATE developer
+        SET
+        <if test="name!=null">
+            name=#{name},
+        </if>
+        <if test="field!=null">
+            field=#{field}
+        </if>
+        WHERE id = #{id}
+    </update>
 </mapper>

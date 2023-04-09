@@ -12,11 +12,14 @@ import java.util.List;
 @SpringBootTest
 class MyappApplicationTests {
 	@Autowired
-	DeveloperService developerService;
+	DeveloperMapper developerMapper;
 	@Test
 	void test() {
-		DeveloperDTO res = developerService.getDeveloper(9);
-		System.out.println(res.getName());
+		DeveloperDTO res = new DeveloperDTO();
+		res.setId(9);
+		res.setField("ttt");
+		res.setName("xxx");
+		System.out.println(developerMapper.update(res));
 	}
 
 }

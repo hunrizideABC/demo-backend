@@ -10,4 +10,10 @@ import java.util.List;
 public interface DeveloperMapper {
 	List<DeveloperDTO> findAll();
 	DeveloperDTO getDeveloper(@Param("id") long id);
+	int deleteDeveloper(@Param("id") long id);
+
+	int insert(DeveloperDTO developerDTO);
+
+	int update(DeveloperDTO developerDTO);
+
 }

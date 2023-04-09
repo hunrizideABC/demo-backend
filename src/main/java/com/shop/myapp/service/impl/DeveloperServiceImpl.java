@@ -21,4 +21,19 @@ public class DeveloperServiceImpl implements DeveloperService {
     public DeveloperDTO getDeveloper(long id) {
         return developerMapper.getDeveloper(id);
     }
+
+    @Override
+    public int deleteDeveloper(long id) {
+        return developerMapper.deleteDeveloper(id);
+    }
+
+    @Override
+    public int insert(DeveloperDTO developerDTO) {
+        return developerMapper.insert(developerDTO);
+    }
+
+    @Override
+    public int update(DeveloperDTO developerDTO) {
+        return developerMapper.update(developerDTO);
+    }
 }
