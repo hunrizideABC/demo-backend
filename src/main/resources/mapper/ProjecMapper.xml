@@ -35,4 +35,14 @@
         </if>
         where id=#{id}
     </update>
+
+
+    <select id="findByPage" resultType="com.shop.myapp.dto.ProjectDTO">
+        select * from project limit #{page},#{size}
+    </select>
+
+    <select id="count" resultType="long">
+        select count(1) from project
+    </select>
+
 </mapper>

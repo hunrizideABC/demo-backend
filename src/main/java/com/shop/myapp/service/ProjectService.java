@@ -1,5 +1,6 @@
 package com.shop.myapp.service;
 
+import com.shop.myapp.dto.PageDTO;
 import com.shop.myapp.dto.ProjectDTO;
 
 
@@ -11,4 +12,6 @@ public interface ProjectService {
     int deleteProject(long id);
     int update(ProjectDTO projectDTO);
     int insert(ProjectDTO projectDTO);
+
+    public PageDTO<ProjectDTO> findByPage(int page, int size);
 }
