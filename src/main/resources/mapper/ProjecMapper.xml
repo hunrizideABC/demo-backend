@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.myapp.dao.ProjectMapper">
+    <select id="findAll" resultType="com.shop.myapp.dto.ProjectDTO">
+        select * from project
+    </select>
+
+    <select id="getProject" resultType="com.shop.myapp.dto.ProjectDTO">
+        select * from project where id=#{id}
+    </select>
+
+    <delete id="deleteProject" parameterType="long">
+        delete from project where id=#{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.shop.myapp.dto.ProjectDTO">
+        insert into project
+        set
+        <if test="name!=null">
+            name = #{name},
+        </if>
+        <if test="field!=null">
+            field = #{field}
+        </if>
+    </insert>
+
+    <update id="update" parameterType="com.shop.myapp.dto.ProjectDTO">
+        update project
+        set
+        <if test="name!=null">
+            name = #{name},
+        </if>
+        <if test="field!=null">
+            field = #{field}
+        </if>
+        where id=#{id}
+    </update>
+</mapper>
