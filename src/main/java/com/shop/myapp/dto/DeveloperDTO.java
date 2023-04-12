@@ -7,8 +7,8 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeveloperDTO implements Serializable {
