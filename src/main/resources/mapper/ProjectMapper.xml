@@ -5,11 +5,18 @@
         select * from project
     </select>
 
-    <select id="getProject" resultType="com.shop.myapp.dto.ProjectDTO">
+    <select id="findOne" resultType="com.shop.myapp.dto.ProjectDTO" parameterType="long">
         select * from project where id=#{id}
     </select>
 
-    <delete id="deleteProject" parameterType="long">
+    <select id="findPage" resultType="com.shop.myapp.dto.ProjectDTO">
+        select * from project limit #{page}, #{size}
+    </select>
+
+    <select id="count" resultType="long">
+        select count(1) from project
+    </select>
+    <delete id="delete" parameterType="long">
         delete from project where id=#{id}
     </delete>
 
@@ -17,10 +24,10 @@
         insert into project
         set
         <if test="name!=null">
-            name = #{name},
+            name=#{name},
         </if>
         <if test="field!=null">
-            field = #{field}
+            field=#{field}
         </if>
     </insert>
 
@@ -28,21 +35,12 @@
         update project
         set
         <if test="name!=null">
-            name = #{name},
+            name=#{name},
         </if>
         <if test="field!=null">
-            field = #{field}
+            field=#{field}
         </if>
         where id=#{id}
     </update>
-
-
-    <select id="findByPage" resultType="com.shop.myapp.dto.ProjectDTO">
-        select * from project limit #{page},#{size}
-    </select>
-
-    <select id="count" resultType="long">
-        select count(1) from project
-    </select>
 
 </mapper>

@@ -12,9 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PageDTO<T> {
-    private int page;
     private int size;
+    private int page;
     private List<T> rows;
     private long total;
-
 }

@@ -21,13 +21,26 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public ProjectDTO getProject(long id) {
-        return projectMapper.getProject(id);
+    public ProjectDTO findOne(long id) {
+        return projectMapper.findOne(id);
     }
 
     @Override
-    public int deleteProject(long id) {
-        return projectMapper.deleteProject(id);
+    public PageDTO<ProjectDTO> findPage(int page, int size) {
+        PageDTO<ProjectDTO> pageDTO = new PageDTO<ProjectDTO>();
+        pageDTO.setPage(page);
+        pageDTO.setSize(size);
+        pageDTO.setTotal(projectMapper.count());
+        Map<String,Object> map = new HashMap<>();
+        map.put("page",(page-1)*size);
+        map.put("size",size);
+        pageDTO.setRows(projectMapper.findPage(map));
+        return pageDTO;
+    }
+
+    @Override
+    public int delete(long id) {
+        return projectMapper.delete(id);
     }
 
     @Override
@@ -39,20 +52,4 @@ public class ProjectServiceImpl implements ProjectService {
     public int insert(ProjectDTO projectDTO) {
         return projectMapper.insert(projectDTO);
     }
-
-    @Override
-    public PageDTO<ProjectDTO> findByPage(int page, int size) {
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("page", (page-1)*size);
-        params.put("size", size);
-        PageDTO<ProjectDTO> pageDTO = new PageDTO<ProjectDTO>();
-        pageDTO.setPage(page);
-        pageDTO.setSize(size);
-        List<ProjectDTO> list = projectMapper.findByPage(params);
-        pageDTO.setRows(list);
-        pageDTO.setTotal(projectMapper.count());
-        return pageDTO;
-    }
-
-
 }

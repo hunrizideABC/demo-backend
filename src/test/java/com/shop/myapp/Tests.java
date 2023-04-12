@@ -12,8 +12,10 @@ public class Tests {
     ProjectMapper projectMapper;
     @Test
     void test(){
-        ProjectDTO projectDTO = projectMapper.getProject(9);
+        ProjectDTO projectDTO = new ProjectDTO();
+        projectDTO.setName("seughe");
+        projectDTO.setField("sneug");
 
-        System.out.println(projectDTO.getField());
+        System.out.println(projectMapper.insert(projectDTO));
     }
 }
